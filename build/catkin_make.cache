@@ -1,0 +1,2 @@
+comm_pkg
+-DCATKIN_DEVEL_PREFIX=/home/robinbro71/ros_cpp/devel -DCMAKE_INSTALL_PREFIX=/home/robinbro71/ros_cpp/install -G Unix Makefiles
