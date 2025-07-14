@@ -36,13 +36,15 @@ int main(int argc, char ** argv) {
     while(ros::ok()) {
         ser.read(buffer.data(), buffer.size());
 
-        for(int i=0; i<buffer.size(); i++) { //parsing data
+        for(int i=0; i<buffer.size()-4; i++) { //parsing data
             //header uart
             if(buffer[i] == 255 && buffer[i+1] == 254) {
 
                 //data
-                uint8_t adc = buffer[i+2];
-                uint8_t button = buffer[i+3];
+                // uint8_t adc_uart = buffer[i+2];//(10000000)
+                // uint8_t button_uart = buffer[i+3];//(4-bit_button)(4-bit_adc)
+                uint16_t adc = (buffer[i+2] << 4) | (buffer[i+3] & 15); //0000(adc_uart)(4-bit_adc)
+                uint16_t button = (buffer[i+3] << 4) & 3840;//0000(4-bit_button)00000000
 
                 //publish data
                 comm_pkg::Stm32Data msg;
