@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="comm_pkg" type="serial_node" name="serial_node" output="screen"/>
+    <!-- <node pkg="rqt_plot" type="rqt_plot" name="rqt_plot" output="screen"/>
+    <node pkg="rqt_graph" type="rqt_graph" name="rqt_graph" output="screen"/> -->
+</launch>
